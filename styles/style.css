@@ -146,6 +146,28 @@ body {
   height: auto;
 }
 
+.giratinaContainer {
+  width: 25%;
+  height: auto;
+  position: absolute;
+  opacity: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+iframe {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 25%;
+  height: 8%;
+  right: 0;
+  opacity: 0.3;
+}
+
 @media (orientation: portrait) {
   .clouds {
     min-width: 100vh;

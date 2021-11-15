@@ -12,7 +12,6 @@ $(".tierra").mousemove(function(e) {
   
     let tl_moveAll = gsap.timeline()
     
-    
     tl_moveAll.to(target, 1, {
       x: (relX - $this.width() / 2) / $this.width() * movement,
       y: (relY - $this.height() / 2) / $this.height() * movement
