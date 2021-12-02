@@ -40,6 +40,6 @@ contador = () => {
 };
 let intervalo = setInterval(contador, 60000);
 
-if (minutos === 3600) {
+if (minutos === 20) {
 	minutos = 0;
 }
