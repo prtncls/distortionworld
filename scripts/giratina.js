@@ -1,32 +1,36 @@
 let giratina = $('.giratinaContainer');
 let giratinaHeight = giratina.height();
 let giratinaWidth = giratina.width();
-let randomX;
-let randomYFrom = -giratinaHeight;
-let randomYTo = window.innerHeight;
 let cry = new Audio('./audio/giratina-cry.mp3');
+let randomX;
+let fixedYFrom = -giratinaHeight * 2;
+let fixedYTo = window.innerHeight;
 
 //giratina bajando
 giratinaDown = () => {
-	console.log('pa abajo');
-	randomX = Math.floor((Math.random() * window.innerWidth) - giratinaWidth);
+
+	randomX = Math.abs(Math.floor((Math.random() * window.innerWidth) - giratinaWidth));
 
 	let tl_giratinaDown = gsap.timeline()
-	tl_giratinaDown.fromTo('.giratinaContainer', {x: randomX,	y: randomYFrom,	opacity: 1}, {duration: 1, opacity: 1, x: randomX, y: randomYTo})
-                  .to('.giratinaContainer', {visibility: 'none'})
+	tl_giratinaDown.fromTo('.giratinaContainer', {x: randomX,	y: fixedYFrom,	opacity: 1}, {duration: 1.5, x: randomX, y: fixedYTo + giratinaHeight})
+
+	cry.play();
+
 }
 
 //giratina subiendo
 giratinaUp = () => {
-	console.log('pa arriba');
-	randomX = Math.floor((Math.random() * window.innerWidth) - giratinaWidth);
+
+	randomX = Math.abs(Math.floor((Math.random() * window.innerWidth) - giratinaWidth));
 
 	let tl_giratinaUp = gsap.timeline()
-	tl_giratinaUp.fromTo('.giratinaContainer', {x: randomX, y: randomYTo, opacity: 1,	rotation: 180, visibility: 'visible'}, {duration: 1,	opacity: 1,	x: randomX,	y: randomYFrom - giratinaHeight})
-                .to('.giratinaContainer', {visibility: 'none'})
+	tl_giratinaUp.fromTo('.giratinaContainer', {x: randomX, y: fixedYTo, opacity: 1,	rotation: 180, visibility: 'visible'}, {duration: 1,	opacity: 1.5,	x: randomX,	y: fixedYFrom})
+
+	cry.play();
+
 }
 
-//counter code starts here
+//contador
 let minutos = 0;
 
 contador = () => {
@@ -34,10 +38,8 @@ contador = () => {
 	console.log(minutos, ' minutos')
 	if (minutos === 1) {
 		giratinaDown()
-    cry.play();
 	} else if (minutos === 2) {
 		giratinaUp();
-    cry.play();
 	}
 };
 let intervalo = setInterval(contador, 60000);
